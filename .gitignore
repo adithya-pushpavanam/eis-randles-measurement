@@ -1,0 +1,7 @@
+*.raw
+*.log
+__pycache__/
+*.pyc
+.spyproject/
+*.docx
+*.pdf
