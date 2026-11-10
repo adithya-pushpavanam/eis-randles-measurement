@@ -9,14 +9,17 @@ import matplotlib.pyplot as plt
 # 1. FILE PATH
 # =========================================================
 
-FOLDER = Path(
-    r"F:\Embedded Systems - TUC\2nd Sem"
-    r"\Project Lab Embedded Systems\code and data\Final Results"
-)
+# Paths are relative to the repository, so the script runs from any computer:
+#   data/     -> LTspice FFT export and result CSV
+#   results/  -> saved plots
+BASE = Path(__file__).resolve().parent.parent
+DATA_FOLDER = BASE / "data"
+FOLDER = BASE / "results"          # plots are saved here
+FOLDER.mkdir(exist_ok=True)
 
-# New export: V(n004) (difference amp output U1) and I(I1)
-INPUT_FILE = FOLDER / "Draft5_n004.txt"
-OUTPUT_CSV = FOLDER / "simulation_theory_results_n004.csv"
+# Export: V(n004) (difference amp output U1) and I(I1)
+INPUT_FILE = DATA_FOLDER / "Draft5_n004.txt"
+OUTPUT_CSV = DATA_FOLDER / "simulation_theory_results_n004.csv"
 
 # U1 output is the cell voltage with inverted sign (about -3.7 V DC).
 # Adding 180 degrees to the voltage phase corrects this.
